@@ -54,6 +54,8 @@ render_pdf(AQUI / "cotizacion.html",         RAIZ / "Cotizacion-Interna.pdf")
 # 3) invitación demo autónoma
 demo = pathlib.Path(AQUI / "invitacion_demo.html").read_text().replace("/*FACES*/", faces_css).replace("/*ASSETS*/", assets)
 demo_page = "<!doctype html><html lang=es><head><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><title>Janeth & Miguel</title></head><body>" + demo + "</body></html>"
-(RAIZ / "demo").mkdir(exist_ok=True)
-(RAIZ / "demo" / "index.html").write_text(demo_page)
-print("HTML: demo/index.html")
+# La invitación demo va en /docs para GitHub Pages ("Deploy from a branch")
+docs = RAIZ / "docs"; docs.mkdir(exist_ok=True)
+(docs / "index.html").write_text(demo_page)
+(docs / ".nojekyll").write_text("")
+print("HTML: docs/index.html")
