@@ -1,32 +1,45 @@
-# Cotización · Invitaciones Digitales con Código QR
+# Invitaciones Digitales con Código QR
 
-Cotización (2 propuestas: **Sencilla** y **Pro**) para ofrecer invitaciones de
-boda como página web con código QR, usando el dominio `109823.shop` (subdominios
-ilimitados gratis, p. ej. `invitacion.109823.shop`).
+Material para ofrecer invitaciones de boda como página web con código QR, usando el
+dominio `109823.shop` (subdominios ilimitados gratis, p. ej. `invitacion.109823.shop`).
 
-## Archivos
+## Entregables
 
-| Archivo | Qué es |
-|---|---|
-| `Cotizacion-Invitaciones-QR.pdf` | **El entregable** — cotización lista (4 páginas, A4). |
-| `fuente/cotizacion.html` | Plantilla editable (contenido, precios, textos). |
-| `fuente/faces.css` | Tipografías (Cormorant Garamond, Great Vibes, Eczar) en base64. |
-| `fuente/fonts/` | Fuentes originales `.woff2`. |
-| `fuente/build.py` | Regenera el PDF desde el HTML. |
+| Archivo | Para quién | Qué es |
+|---|---|---|
+| `Cotizacion-Cliente.pdf` | **El cliente** | 3 propuestas (Sencilla / Pro / Premium). **No** muestra costos internos. |
+| `Cotizacion-Interna.pdf` | **Tú (Jorge)** | Lo mismo + página de conceptos y costos reales (margen). No compartir. |
+| `demo/invitacion-demo.html` | Demo | Invitación de demostración autónoma (ábrela en el navegador). |
 
-## Cómo editar precios o textos
+**Liga demo en vivo:** publicada como artifact en claude.ai (incluye el mapa de mesas
+con check-in en vivo del plan Premium).
 
-1. Edita `fuente/cotizacion.html` (busca `899`, `1,999`, o los `<li>` de cada paquete).
-2. Regenera el PDF:
+## Precios (editables)
+
+| Plan | Precio | Incluye |
+|---|---|---|
+| **Sencilla** | $1,200 MXN | Portada, cuenta regresiva, evento, mapa, música, QR + enlace. |
+| **Pro** | $2,800 MXN | + RSVP con panel, galería, mesa de regalos, itinerario, tarjeta física QR. |
+| **Premium** | $3,600 MXN | + Mapa de mesas y **check-in en vivo**: QR por invitado, hora de llegada, alta manual en puerta, tablero en vivo. |
+
+## Diseño floral
+
+El arte acuarela es **exactamente** el del ejemplo de la boda Janeth & Miguel
+(extraído de `Janeth_C_tarjetas.pdf`): marco completo en portadas/hero y esquinas
+suavizadas en páginas de contenido. Assets en `fuente/art/`.
+
+## Cómo editar y regenerar
+
+1. Edita el contenido/precios en `fuente/cotizacion_cliente.html` y `fuente/cotizacion.html`
+   (invitación demo en `fuente/invitacion_demo.html`).
+2. Regenera todo:
    ```bash
    python3 fuente/build.py
    ```
+   Genera los dos PDF y `demo/invitacion-demo.html`. Requiere Chromium headless.
 
-## Resumen del modelo de costos
+## Modelo de costos (interno)
 
-El único gasto real es el **dominio** (~$180 MXN/año, ya adquirido). Hosting, SSL,
-código QR, formularios de confirmación (RSVP) y subdominios se resuelven con planes
-**gratuitos**. Cada invitación adicional cuesta prácticamente $0, así que cada venta
-es casi utilidad.
-
-Precios de referencia (editables): **Sencilla $899 MXN** · **Pro $1,999 MXN**.
+El único gasto real es el **dominio** (~$180 MXN/año, ya adquirido). Hosting, SSL, QR,
+RSVP, check-in (Firebase/Supabase plan gratuito) y subdominios = **$0**. Cada venta es
+casi utilidad pura.

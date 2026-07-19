@@ -1,0 +1,446 @@
+<style id="faces">/*FACES*/</style>
+<style id="assets">/*ASSETS*/</style>
+<style>
+:root{
+  color-scheme: light;
+  --cream:#FAF6EA; --cream2:#F1E8D3; --paper:#FFFDF7;
+  --terra:#BC6242; --terra-d:#9E4E31; --terra-soft:#D89C7E;
+  --olive:#7C8352; --olive-l:#9AA06B; --sage:#B7BE97;
+  --slate:#7E8CA0; --slate-l:#A9B3C2;
+  --ink:#4A4038; --ink-soft:#6E6357; --muted:#8C8171;
+  --gold:#D6A34B; --line:#E7DCC3;
+}
+*{box-sizing:border-box;}
+html,body{margin:0; padding:0;}
+body{
+  background:
+    radial-gradient(140% 60% at 50% 0%, #FFFDF7 0%, var(--cream) 45%, var(--cream2) 130%);
+  color:var(--ink); font-family:'Corm',Georgia,serif; font-size:18px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;}
+.wrap{max-width:760px; margin:0 auto; padding:0 20px;}
+.section{padding:54px 0;}
+.eyebrow{font-family:'Eczar',serif; text-transform:uppercase; letter-spacing:.4em;
+  font-size:12px; color:var(--olive); font-weight:400; text-align:center;}
+.eyebrow.t{color:var(--terra-d);}
+.script{font-family:'Vibes',cursive; color:var(--terra); line-height:.9;}
+h2{font-family:'Corm',serif; font-weight:600; color:var(--terra-d); text-align:center;
+  font-size:34px; margin:.15em 0 .1em; letter-spacing:.01em; text-wrap:balance;}
+h3{font-family:'Eczar',serif; font-weight:600; font-size:14px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink); margin:0;}
+p{color:var(--ink-soft); text-wrap:pretty;}
+.center{text-align:center;}
+.divider{display:flex; align-items:center; justify-content:center; gap:14px; color:var(--terra-soft); margin:10px 0;}
+.divider::before,.divider::after{content:""; height:1px; width:64px; background:linear-gradient(90deg,transparent,var(--terra-soft));}
+.divider::after{background:linear-gradient(270deg,transparent,var(--terra-soft));}
+.btn{display:inline-flex; align-items:center; gap:8px; font-family:'Eczar',serif; font-size:13px;
+  letter-spacing:.05em; color:#fff; background:var(--terra); border:none; border-radius:40px;
+  padding:11px 22px; cursor:pointer; text-decoration:none; box-shadow:0 8px 20px rgba(160,90,55,.22);
+  transition:transform .15s ease, background .15s ease;}
+.btn:hover{background:var(--terra-d); transform:translateY(-1px);}
+.btn.ghost{background:var(--paper); color:var(--terra-d); border:1px solid var(--line); box-shadow:none;}
+.btn.ghost:hover{background:#fff; border-color:var(--terra-soft);}
+
+/* ---------- HERO ---------- */
+.hero{position:relative; margin:24px auto 6px; max-width:480px; padding:0 8px;}
+.hero-card{position:relative; aspect-ratio:1024/1536; background:var(--art-border) no-repeat center;
+  background-size:100% 100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:18% 14% 16%;}
+.hero-eyebrow{font-family:'Eczar',serif; text-transform:uppercase; letter-spacing:.44em;
+  font-size:11px; color:var(--olive); text-align:center;}
+.names{font-family:'Vibes',cursive; color:var(--terra); text-align:center; line-height:.9;
+  font-size:54px; margin:6px 0 5px;}
+.date{font-family:'Corm',serif; text-align:center; color:var(--ink); font-size:19px;
+  letter-spacing:.28em; font-weight:500; padding-left:.28em;}
+.blessing{text-align:center; color:var(--slate); font-style:italic; font-size:14px;
+  max-width:290px; margin:13px auto 0; line-height:1.45;}
+.countdown{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:310px; margin:18px auto 0;}
+.cd{background:var(--paper); border:1px solid var(--line); border-radius:11px; padding:9px 3px 7px; text-align:center;
+  box-shadow:0 5px 13px rgba(160,120,80,.10);}
+.cd .n{font-family:'Corm',serif; font-weight:600; font-size:25px; color:var(--terra); line-height:1;
+  font-variant-numeric:tabular-nums;}
+.cd .l{font-family:'Eczar',serif; font-size:8.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:3px;}
+
+/* ---------- cards / grids ---------- */
+.two{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.card{background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:24px 22px;
+  box-shadow:0 10px 26px rgba(160,120,80,.07);}
+.card .ic{width:34px; height:34px; margin-bottom:12px;}
+.card .k{font-family:'Eczar',serif; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--olive);}
+.card .big{font-family:'Corm',serif; font-size:24px; color:var(--terra-d); font-weight:600; margin:2px 0 6px;}
+.card p{font-size:15px; margin:0 0 14px;}
+
+/* timeline */
+.timeline{max-width:460px; margin:0 auto; position:relative; padding-left:26px;}
+.timeline::before{content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px;
+  background:linear-gradient(var(--terra-soft),var(--sage));}
+.tl{position:relative; padding:10px 0 18px;}
+.tl::before{content:""; position:absolute; left:-26px; top:14px; width:12px; height:12px; border-radius:50%;
+  background:var(--terra); border:3px solid var(--paper); box-shadow:0 0 0 1px var(--terra-soft);}
+.tl .time{font-family:'Eczar',serif; font-size:12px; letter-spacing:.12em; color:var(--terra-d); text-transform:uppercase;}
+.tl .ev{font-family:'Corm',serif; font-size:20px; color:var(--ink); font-weight:500;}
+.tl .ds{font-size:14px; color:var(--muted);}
+
+/* dress palette */
+.palette{display:flex; gap:12px; justify-content:center; margin-top:16px; flex-wrap:wrap;}
+.sw{width:44px; height:44px; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(0,0,0,.06), 0 4px 10px rgba(0,0,0,.08);}
+
+/* gifts */
+.gifts{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+.gift{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:20px 14px; text-align:center;}
+.gift .ic{width:30px;height:30px;margin:0 auto 8px;}
+.gift .t{font-family:'Eczar',serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--terra-d);}
+.gift .d{font-size:13px; color:var(--muted); margin-top:3px;}
+
+/* RSVP */
+.form{max-width:460px; margin:0 auto; background:var(--paper); border:1px solid var(--line);
+  border-radius:18px; padding:26px 24px; box-shadow:0 12px 30px rgba(160,120,80,.09);}
+.field{margin-bottom:14px;}
+.field label{font-family:'Eczar',serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--olive); display:block; margin-bottom:5px;}
+.field input,.field select,.field textarea{width:100%; font-family:'Corm',serif; font-size:16px; color:var(--ink);
+  background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 12px; outline:none;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--terra-soft); box-shadow:0 0 0 3px rgba(216,156,126,.18);}
+.pillset{display:flex; gap:10px;}
+.pill{flex:1; text-align:center; cursor:pointer; font-family:'Eczar',serif; font-size:12px; letter-spacing:.08em;
+  padding:10px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink-soft);}
+.pill.on{background:var(--olive); color:#fff; border-color:var(--olive);}
+.thanks{display:none; text-align:center;}
+.thanks.show{display:block;}
+
+/* ---------- SEATING DEMO ---------- */
+.demo-banner{display:inline-flex; align-items:center; gap:8px; font-family:'Eczar',serif; font-size:11px;
+  letter-spacing:.18em; text-transform:uppercase; color:#fff; background:var(--olive); padding:6px 14px; border-radius:20px;}
+.seat-wrap{background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:22px;
+  box-shadow:0 16px 40px rgba(150,110,70,.10); margin-top:22px;}
+.seat-toolbar{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:6px;}
+.stat{display:flex; gap:18px; flex-wrap:wrap;}
+.stat .s{text-align:center;}
+.stat .s .v{font-family:'Corm',serif; font-weight:600; font-size:30px; line-height:1; color:var(--terra-d); font-variant-numeric:tabular-nums;}
+.stat .s.arr .v{color:var(--olive);}
+.stat .s .lb{font-family:'Eczar',serif; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px;}
+.controls{display:flex; gap:10px; flex-wrap:wrap;}
+.tables{display:grid; grid-template-columns:repeat(3,1fr); gap:20px 14px; margin:22px 0 6px;}
+@media(max-width:560px){.tables{grid-template-columns:repeat(2,1fr);}}
+.table{position:relative; aspect-ratio:1/1; margin:0 auto; width:100%; max-width:150px;}
+.tabledisc{position:absolute; inset:26%; border-radius:50%; background:radial-gradient(circle at 50% 38%,#fff,#F3EAD7);
+  border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+  font-family:'Corm',serif; font-weight:600; color:var(--terra-soft); font-size:15px; z-index:1;}
+.chair{position:absolute; width:20%; height:20%; transform:translate(-50%,-50%);
+  border-radius:50% 50% 46% 46%; background:#fff; border:1.5px solid var(--line);
+  transition:background .3s ease, border-color .3s ease, transform .2s ease; cursor:pointer;}
+.chair.here{background:var(--olive); border-color:var(--olive); box-shadow:0 4px 10px rgba(124,131,82,.35);}
+.chair.here::after{content:"✓"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:11px; font-weight:700;}
+.chair.pulse{animation:pop .5s ease;}
+@keyframes pop{0%{transform:translate(-50%,-50%) scale(1);}45%{transform:translate(-50%,-50%) scale(1.28);}100%{transform:translate(-50%,-50%) scale(1);}}
+.tname{font-family:'Eczar',serif; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); text-align:center; margin-top:2px;}
+.arrivals{margin-top:18px; border-top:1px dashed var(--line); padding-top:14px;}
+.arrivals h4{font-family:'Eczar',serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--olive); margin:0 0 10px;}
+.arr-list{display:flex; flex-direction:column; gap:7px; max-height:190px; overflow-y:auto;}
+.arr-row{display:flex; justify-content:space-between; align-items:center; font-size:14px; color:var(--ink);
+  background:#F7F1E1; border-radius:8px; padding:7px 12px;}
+.arr-row .t{font-family:'Eczar',serif; font-size:11px; color:var(--terra-d); letter-spacing:.04em; font-variant-numeric:tabular-nums;}
+.arr-empty{color:var(--muted); font-size:14px; font-style:italic;}
+.tag-how{font-size:14px; color:var(--muted); max-width:520px; margin:14px auto 0; text-align:center;}
+
+/* gallery */
+.gal{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+.tile{aspect-ratio:3/4; border-radius:12px; position:relative; overflow:hidden; border:1px solid var(--line);}
+.tile svg{position:absolute; inset:0; width:100%; height:100%;}
+
+footer{text-align:center; padding:48px 20px 60px;}
+footer .names{font-size:52px; margin:0;}
+.note{font-family:'Eczar',serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:10px;}
+.demopill{display:inline-block; font-family:'Eczar',serif; font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--terra-d); background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:5px 14px; margin-top:8px;}
+
+@media(max-width:600px){
+  .names{font-size:60px;} .date{font-size:20px; letter-spacing:.24em;}
+  .cd .n{font-size:30px;} h2{font-size:28px;} .two,.gifts,.gal{grid-template-columns:1fr;}
+  .gifts{grid-template-columns:1fr 1fr;} .hero-card{padding:54px 18px 40px;}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important;}}
+</style>
+
+<!-- floral defs -->
+<svg width="0" height="0" style="position:absolute"><defs>
+  <g id="cluster">
+    <path d="M10 70 C-10 55 -6 25 22 18 C10 40 18 58 34 60 C24 72 16 74 10 70Z" fill="#8A9256" opacity=".9"/>
+    <path d="M120 30 C150 24 168 42 158 66 C146 48 128 46 116 58 C112 44 112 34 120 30Z" fill="#9AA06B" opacity=".85"/>
+    <path d="M150 120 C176 128 180 150 164 166 C160 146 146 138 132 142 C138 128 142 122 150 120Z" fill="#7C8352" opacity=".85"/>
+    <path d="M40 150 C22 168 -2 160 -2 138 C16 150 32 144 40 130 C46 140 46 146 40 150Z" fill="#B7BE97" opacity=".9"/>
+    <g transform="translate(74 66)">
+      <circle r="30" fill="#E7B79A"/>
+      <path d="M0 0 m-22 0 a22 22 0 1 1 44 0 a17 17 0 1 0 -34 4 a12 12 0 1 1 24 -3 a8 8 0 1 0 -15 2" fill="none" stroke="#B4643F" stroke-width="3.2" stroke-linecap="round"/>
+      <circle r="4" fill="#9E4E31"/>
+    </g>
+    <g transform="translate(140 96)"><circle r="16" fill="#E9C6A8"/>
+      <path d="M-9 6 a9 9 0 0 1 18 0" fill="none" stroke="#C87B54" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M-5 -2 a5 5 0 0 1 10 0" fill="none" stroke="#C87B54" stroke-width="2.2" stroke-linecap="round"/></g>
+    <g transform="translate(34 40)"><g fill="#E7C15A">
+      <ellipse rx="6" ry="10" cy="-11"/><ellipse rx="6" ry="10" cy="11"/><ellipse rx="10" ry="6" cx="-11"/><ellipse rx="10" ry="6" cx="11"/>
+      </g><circle r="4.5" fill="#C88A2E"/></g>
+    <g transform="translate(118 150)" fill="#93A0B4"><circle r="5" cx="-8"/><circle r="5" cx="8"/><circle r="5" cy="-8"/><circle r="5" cy="8"/><circle r="3.4" fill="#E7C15A"/></g>
+    <g transform="translate(20 108)" fill="#A9B3C2"><circle r="4" cx="-6"/><circle r="4" cx="6"/><circle r="4" cy="-6"/><circle r="4" cy="6"/><circle r="2.6" fill="#D6A34B"/></g>
+    <path d="M96 140 C104 160 108 176 104 190" fill="none" stroke="#9AA06B" stroke-width="2"/><circle cx="104" cy="190" r="3.5" fill="#C87B54"/>
+  </g>
+</defs></svg>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="hero-card">
+    <div class="hero-eyebrow">Nuestra Boda</div>
+    <div class="names">Janeth&nbsp;&amp;&nbsp;Miguel</div>
+    <div class="date">27 · 03 · 2027</div>
+    <p class="blessing">Gracias por ser parte de nuestra historia y celebrar con nosotros este día inolvidable.</p>
+
+    <div class="countdown" id="cd">
+      <div class="cd"><div class="n" id="d">—</div><div class="l">Días</div></div>
+      <div class="cd"><div class="n" id="h">—</div><div class="l">Horas</div></div>
+      <div class="cd"><div class="n" id="m">—</div><div class="l">Min</div></div>
+      <div class="cd"><div class="n" id="s">—</div><div class="l">Seg</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CUÁNDO Y DÓNDE ================= -->
+<section class="section wrap">
+  <div class="eyebrow t">Reserva la fecha</div>
+  <h2>¿Cuándo y dónde?</h2>
+  <div class="divider"><span>❦</span></div>
+  <div class="two" style="margin-top:22px">
+    <div class="card center">
+      <svg class="ic" style="margin:0 auto 12px" viewBox="0 0 40 40" fill="none"><path d="M20 5c-7 0-12 5-12 12 0 8 12 18 12 18s12-10 12-18c0-7-5-12-12-12z" stroke="#BC6242" stroke-width="2.2"/><circle cx="20" cy="17" r="4.5" stroke="#7C8352" stroke-width="2.2"/></svg>
+      <div class="k">Ceremonia</div>
+      <div class="big">5:00 pm</div>
+      <p>Parroquia de San Miguel Arcángel<br>Centro, Ciudad</p>
+      <a class="btn ghost" href="https://maps.google.com" target="_blank" rel="noopener">Ver mapa</a>
+    </div>
+    <div class="card center">
+      <svg class="ic" style="margin:0 auto 12px" viewBox="0 0 40 40" fill="none"><path d="M8 20l12-9 12 9" stroke="#BC6242" stroke-width="2.2" stroke-linejoin="round"/><path d="M11 18v14h18V18" stroke="#7C8352" stroke-width="2.2" stroke-linejoin="round"/><path d="M18 32v-7h4v7" stroke="#D6A34B" stroke-width="2.2"/></svg>
+      <div class="k">Recepción</div>
+      <div class="big">7:00 pm</div>
+      <p>Jardín Los Encinos<br>Salón principal</p>
+      <a class="btn ghost" href="https://maps.google.com" target="_blank" rel="noopener">Ver mapa</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ITINERARIO ================= -->
+<section class="section wrap">
+  <div class="eyebrow t">El gran día</div>
+  <h2>Itinerario</h2>
+  <div class="divider"><span>❦</span></div>
+  <div class="timeline" style="margin-top:20px">
+    <div class="tl"><div class="time">5:00 pm</div><div class="ev">Ceremonia religiosa</div><div class="ds">Recepción de invitados 30 min antes.</div></div>
+    <div class="tl"><div class="time">6:30 pm</div><div class="ev">Cóctel de bienvenida</div><div class="ds">Bebidas y bocadillos en el jardín.</div></div>
+    <div class="tl"><div class="time">7:00 pm</div><div class="ev">Banquete</div><div class="ds">Pase a mesas asignadas.</div></div>
+    <div class="tl"><div class="time">9:00 pm</div><div class="ev">Primer baile & fiesta</div><div class="ds">¡A bailar hasta el amanecer!</div></div>
+  </div>
+</section>
+
+<!-- ================= VESTIMENTA ================= -->
+<section class="section wrap center">
+  <div class="eyebrow t">Código de vestimenta</div>
+  <h2>Formal — Etiqueta rigurosa</h2>
+  <p style="max-width:440px;margin:8px auto 0">Te sugerimos estos tonos para acompañar la paleta de la boda. Reservado el color blanco para la novia.</p>
+  <div class="palette">
+    <span class="sw" style="background:#BC6242"></span>
+    <span class="sw" style="background:#D89C7E"></span>
+    <span class="sw" style="background:#7C8352"></span>
+    <span class="sw" style="background:#7E8CA0"></span>
+    <span class="sw" style="background:#D6A34B"></span>
+  </div>
+</section>
+
+<!-- ================= MESA DE REGALOS ================= -->
+<section class="section wrap">
+  <div class="eyebrow t">Con cariño</div>
+  <h2>Mesa de regalos</h2>
+  <div class="divider"><span>❦</span></div>
+  <div class="gifts" style="margin-top:20px">
+    <div class="gift"><svg class="ic" viewBox="0 0 32 32" fill="none"><rect x="6" y="12" width="20" height="14" rx="2" stroke="#BC6242" stroke-width="2"/><path d="M6 12l3-5h14l3 5M16 12v14" stroke="#7C8352" stroke-width="2"/></svg><div class="t">Sobre / Efectivo</div><div class="d">Lluvia de sobres</div></div>
+    <div class="gift"><svg class="ic" viewBox="0 0 32 32" fill="none"><rect x="5" y="8" width="22" height="16" rx="2" stroke="#BC6242" stroke-width="2"/><path d="M5 13h22" stroke="#7C8352" stroke-width="2"/></svg><div class="t">Transferencia</div><div class="d">Datos bancarios</div></div>
+    <div class="gift"><svg class="ic" viewBox="0 0 32 32" fill="none"><path d="M16 27S6 20 6 13a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 7-10 14-10 14z" stroke="#BC6242" stroke-width="2" stroke-linejoin="round"/></svg><div class="t">Liverpool / Amazon</div><div class="d">Código de evento</div></div>
+  </div>
+</section>
+
+<!-- ================= RSVP ================= -->
+<section class="section wrap">
+  <div class="eyebrow t">Te esperamos</div>
+  <h2>Confirma tu asistencia</h2>
+  <div class="divider"><span>❦</span></div>
+  <form class="form" id="rsvp" style="margin-top:20px">
+    <div class="field"><label>Nombre completo</label><input type="text" placeholder="Tu nombre" required></div>
+    <div class="field"><label>¿Asistirás?</label>
+      <div class="pillset" id="assist">
+        <div class="pill on" data-v="si">Sí, ahí estaré</div>
+        <div class="pill" data-v="no">No podré ir</div>
+      </div>
+    </div>
+    <div class="field"><label>Número de invitados</label>
+      <select><option>1 persona</option><option>2 personas</option><option>3 personas</option><option>4 personas</option></select>
+    </div>
+    <div class="field"><label>Mensaje para los novios (opcional)</label><textarea rows="2" placeholder="Un buen deseo..."></textarea></div>
+    <button class="btn" type="submit" style="width:100%; justify-content:center">Enviar confirmación</button>
+  </form>
+  <div class="thanks" id="thanks">
+    <div class="script" style="font-size:44px">¡Gracias!</div>
+    <p>Tu confirmación quedó registrada. (Demo — no se envía nada real.)</p>
+  </div>
+</section>
+
+<!-- ================= SEATING / CHECK-IN DEMO ================= -->
+<section class="section wrap">
+  <div class="center"><span class="demo-banner">Función Premium · Demo interactiva</span></div>
+  <h2 style="margin-top:14px">Mapa de mesas & check-in en vivo</h2>
+  <p class="tag-how">Cada invitado o familia recibe su <b>QR personalizado</b>. Al llegar, alguien lo escanea en la entrada
+    y su silla se ocupa en el mapa con la <b>hora de llegada</b>. ¿Llegó sin QR? Se registra a mano.
+    <br><b>Pruébalo:</b> presiona “Simular llegada” o toca una silla vacía.</p>
+
+  <div class="seat-wrap">
+    <div class="seat-toolbar">
+      <div class="stat">
+        <div class="s arr"><div class="v" id="arrN">0</div><div class="lb">Llegaron</div></div>
+        <div class="s"><div class="v" id="pendN">0</div><div class="lb">Pendientes</div></div>
+        <div class="s"><div class="v" id="totN">0</div><div class="lb">Invitados</div></div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="simBtn">Simular llegada</button>
+        <button class="btn ghost" id="resetBtn">Reiniciar</button>
+      </div>
+    </div>
+    <div class="tables" id="tables"></div>
+    <div class="arrivals">
+      <h4>Registro de llegadas</h4>
+      <div class="arr-list" id="arrList"><div class="arr-empty">Aún no llega nadie… simula una llegada.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERÍA ================= -->
+<section class="section wrap">
+  <div class="eyebrow t">Recuerdos</div>
+  <h2>Galería</h2>
+  <div class="divider"><span>❦</span></div>
+  <div class="gal" id="gal" style="margin-top:20px"></div>
+  <p class="center" style="font-size:13px;color:var(--muted);margin-top:14px">Aquí irían las fotos reales de la pareja.</p>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="divider"><span>❦</span></div>
+  <div class="names script">Janeth &amp; Miguel</div>
+  <div class="date" style="font-size:18px">27 · 03 · 2027</div>
+  <div class="note">Hecho con cariño · Invitación digital con QR</div>
+  <div class="demopill">Demo · la versión final vive en invitacion.109823.shop</div>
+</footer>
+
+<script>
+// ---------- Countdown ----------
+(function(){
+  var target = new Date(2027,2,27,17,0,0).getTime();
+  function pad(n){return (n<10?'0':'')+n;}
+  function tick(){
+    var diff = target - Date.now();
+    if(diff<0) diff=0;
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor(diff%86400000/3600000);
+    var m=Math.floor(diff%3600000/60000);
+    var s=Math.floor(diff%60000/1000);
+    document.getElementById('d').textContent=d;
+    document.getElementById('h').textContent=pad(h);
+    document.getElementById('m').textContent=pad(m);
+    document.getElementById('s').textContent=pad(s);
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+// ---------- RSVP demo ----------
+(function(){
+  var pills=document.querySelectorAll('#assist .pill');
+  pills.forEach(function(p){p.addEventListener('click',function(){
+    pills.forEach(function(x){x.classList.remove('on');}); p.classList.add('on');
+  });});
+  document.getElementById('rsvp').addEventListener('submit',function(e){
+    e.preventDefault();
+    this.style.display='none';
+    document.getElementById('thanks').classList.add('show');
+  });
+})();
+
+// ---------- Seating / check-in demo ----------
+(function(){
+  var TABLES=[
+    {name:'Mesa 1',guests:['Fam. Ramírez','Fam. López','Ana & Luis','Sofía G.','Carlos M.','Fam. Ortiz']},
+    {name:'Mesa 2',guests:['Fam. Torres','Diana R.','Fam. Cruz','Pedro N.','Marta & Iván']},
+    {name:'Mesa 3',guests:['Fam. Vega','Rosa M.','Fam. Díaz','Jorge P.','Lucía & Beto','Fam. Soto']},
+    {name:'Mesa 4',guests:['Fam. Reyes','Nadia L.','Fam. Mora','Hugo T.','Elsa & Raúl']},
+    {name:'Mesa 5',guests:['Fam. Cano','Bruno S.','Fam. Gil','Karla V.','Toño & Meli','Fam. Rubio']},
+    {name:'Mesa 6',guests:['Fam. Nava','Iris D.','Fam. Peña','Saúl R.','Vale & Nico']},
+  ];
+  var seats=[]; // flat list
+  var tablesEl=document.getElementById('tables');
+  TABLES.forEach(function(t,ti){
+    var wrap=document.createElement('div');
+    var box=document.createElement('div'); box.className='table';
+    var disc=document.createElement('div'); disc.className='tabledisc'; disc.textContent=ti+1;
+    box.appendChild(disc);
+    var n=t.guests.length;
+    t.guests.forEach(function(g,gi){
+      var ang=(gi/n)*2*Math.PI - Math.PI/2;
+      var cx=50+40*Math.cos(ang), cy=50+40*Math.sin(ang);
+      var ch=document.createElement('div'); ch.className='chair';
+      ch.style.left=cx+'%'; ch.style.top=cy+'%'; ch.title=g+' · '+t.name;
+      var seat={el:ch,name:g,table:t.name,here:false};
+      ch.addEventListener('click',function(){ if(!seat.here) checkin(seat); });
+      seats.push(seat); box.appendChild(ch);
+    });
+    var lbl=document.createElement('div'); lbl.className='tname'; lbl.textContent=t.name;
+    wrap.appendChild(box); wrap.appendChild(lbl); tablesEl.appendChild(wrap);
+  });
+
+  var arrN=document.getElementById('arrN'), pendN=document.getElementById('pendN'), totN=document.getElementById('totN');
+  var arrList=document.getElementById('arrList');
+  var arrived=0;
+  totN.textContent=seats.length; pendN.textContent=seats.length;
+
+  function now(){var dt=new Date();var h=dt.getHours(),m=dt.getMinutes();var ap=h>=12?'pm':'am';h=h%12||12;return h+':'+(m<10?'0':'')+m+' '+ap;}
+  function checkin(seat){
+    seat.here=true; seat.el.classList.add('here','pulse');
+    setTimeout(function(){seat.el.classList.remove('pulse');},500);
+    arrived++; arrN.textContent=arrived; pendN.textContent=seats.length-arrived;
+    if(arrList.querySelector('.arr-empty')) arrList.innerHTML='';
+    var row=document.createElement('div'); row.className='arr-row';
+    row.innerHTML='<span>'+seat.name+' · '+seat.table+'</span><span class="t">'+now()+'</span>';
+    arrList.insertBefore(row,arrList.firstChild);
+  }
+  document.getElementById('simBtn').addEventListener('click',function(){
+    var pend=seats.filter(function(s){return !s.here;});
+    if(!pend.length) return;
+    checkin(pend[Math.floor(Math.random()*pend.length)]);
+  });
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    seats.forEach(function(s){s.here=false; s.el.classList.remove('here','pulse');});
+    arrived=0; arrN.textContent=0; pendN.textContent=seats.length;
+    arrList.innerHTML='<div class="arr-empty">Aún no llega nadie… simula una llegada.</div>';
+  });
+})();
+
+// ---------- Gallery placeholders ----------
+(function(){
+  var grads=[['#F0D9C4','#D89C7E'],['#DCE0CB','#9AA06B'],['#D9DEE7','#93A0B4'],['#F3E4C6','#D6A34B'],['#EAD3C6','#BC6242'],['#DDE3D2','#7C8352']];
+  var gal=document.getElementById('gal');
+  for(var i=0;i<6;i++){
+    var g=grads[i];
+    var t=document.createElement('div'); t.className='tile';
+    t.innerHTML='<svg viewBox="0 0 90 120" preserveAspectRatio="xMidYMid slice">'+
+      '<rect width="90" height="120" fill="'+g[0]+'"/>'+
+      '<circle cx="45" cy="54" r="20" fill="'+g[1]+'" opacity=".55"/>'+
+      '<path d="M45 40c-8 0-14 6-14 14 0 9 14 20 14 20s14-11 14-20c0-8-6-14-14-14z" fill="#FFFDF7" opacity=".5"/></svg>';
+    gal.appendChild(t);
+  }
+})();
+</script>
