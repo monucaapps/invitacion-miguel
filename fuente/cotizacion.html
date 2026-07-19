@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style id="faces">/*FACES*/</style>
+<style>
+:root{
+  --cream:#FAF6EA; --cream2:#F4ECD8; --paper:#FFFDF7;
+  --terra:#BC6242; --terra-d:#9E4E31; --terra-soft:#D89C7E;
+  --olive:#7C8352; --olive-l:#9AA06B; --sage:#B7BE97;
+  --slate:#7E8CA0; --slate-l:#A9B3C2;
+  --ink:#4A4038; --ink-soft:#6E6357; --muted:#8C8171;
+  --gold:#D6A34B; --line:#E4D8BF;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+@page{size:A4; margin:0;}
+html,body{background:#ddd;}
+body{font-family:'Corm',serif; color:var(--ink); -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+.page{
+  position:relative; width:210mm; height:297mm; overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #FFFDF7 0%, var(--cream) 55%, var(--cream2) 100%);
+  page-break-after:always;
+}
+.page:last-child{page-break-after:auto;}
+.frame{position:absolute; inset:9mm; border:1px solid var(--line); border-radius:3px;}
+.pad{position:absolute; inset:9mm; padding:15mm 15mm;}
+
+/* ---------- typography ---------- */
+.script{font-family:'Vibes',cursive; color:var(--terra); line-height:.9;}
+.eyebrow{font-family:'Eczar',serif; text-transform:uppercase; letter-spacing:.42em;
+  font-size:11px; color:var(--olive); font-weight:400;}
+.eyebrow.t{color:var(--terra-d);}
+h1.disp{font-family:'Corm',serif; font-weight:600; color:var(--terra-d); line-height:1.02;}
+h2{font-family:'Corm',serif; font-weight:600; color:var(--terra-d); font-size:26px; letter-spacing:.01em;}
+h3{font-family:'Eczar',serif; font-weight:600; color:var(--ink); font-size:13px; letter-spacing:.06em; text-transform:uppercase;}
+p{font-size:16px; line-height:1.5; color:var(--ink-soft);}
+.small{font-size:12.5px; color:var(--muted); line-height:1.5;}
+.divider{display:flex; align-items:center; justify-content:center; gap:14px; color:var(--terra-soft);}
+.divider::before,.divider::after{content:""; height:1px; width:70px; background:linear-gradient(90deg,transparent,var(--terra-soft));}
+.divider::after{background:linear-gradient(270deg,transparent,var(--terra-soft));}
+
+/* ---------- cover ---------- */
+.cover-inner{position:absolute; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center; padding:0 30mm;}
+.url-chip{display:inline-block; font-family:'Eczar',serif; font-size:14px; letter-spacing:.04em;
+  color:var(--terra-d); background:var(--paper); border:1px solid var(--line);
+  border-radius:40px; padding:9px 22px; box-shadow:0 6px 18px rgba(160,110,70,.10);}
+.cover-foot{position:absolute; left:0; right:0; bottom:20mm; display:flex;
+  justify-content:space-between; padding:0 26mm; align-items:flex-end;}
+.cover-foot .lbl{font-family:'Eczar',serif; font-size:9.5px; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--olive);}
+.cover-foot .val{font-family:'Corm',serif; font-size:16px; color:var(--ink); font-weight:500;}
+
+/* ---------- section header ---------- */
+.hd{display:flex; flex-direction:column; gap:6px; margin-bottom:8mm;}
+.hd .num{font-family:'Vibes',cursive; font-size:40px; color:var(--terra-soft); line-height:.6;}
+
+/* steps */
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:4mm;}
+.step{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:16px 12px; text-align:center;}
+.step .ic{width:40px;height:40px;margin:0 auto 10px;}
+.step .st{font-family:'Eczar',serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--terra-d); margin-bottom:4px;}
+.step .sd{font-size:13px; color:var(--ink-soft); line-height:1.35;}
+
+/* feature list */
+.always{margin-top:9mm; background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:8mm 9mm;}
+.chips{display:grid; grid-template-columns:1fr 1fr; gap:9px 26px; margin-top:5mm;}
+.chip{display:flex; gap:10px; align-items:flex-start; font-size:14.5px; color:var(--ink); line-height:1.3;}
+.tick{flex:0 0 auto; width:18px; height:18px; margin-top:1px;}
+
+/* ---------- packages ---------- */
+.cards{display:grid; grid-template-columns:1fr 1fr; gap:9mm; margin-top:2mm;}
+.card{position:relative; background:var(--paper); border:1px solid var(--line); border-radius:16px;
+  padding:9mm 8mm 8mm; display:flex; flex-direction:column;}
+.card.pro{border-color:var(--terra-soft); box-shadow:0 14px 34px rgba(160,100,60,.12);}
+.badge{position:absolute; top:-11px; right:16px; font-family:'Eczar',serif; font-size:9px;
+  letter-spacing:.2em; text-transform:uppercase; color:#fff; background:var(--terra);
+  padding:5px 12px; border-radius:20px;}
+.card .kite{font-family:'Eczar',serif; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--olive);}
+.card .name{font-family:'Corm',serif; font-weight:600; font-size:30px; color:var(--terra-d); margin:2px 0 2px;}
+.card .tag{font-size:13.5px; color:var(--muted); min-height:34px;}
+.price{display:flex; align-items:baseline; gap:4px; margin:6px 0 3px;}
+.price .cur{font-family:'Eczar',serif; font-size:15px; color:var(--ink-soft);}
+.price .amt{font-family:'Corm',serif; font-weight:600; font-size:44px; color:var(--ink); line-height:1;}
+.price .mx{font-family:'Eczar',serif; font-size:11px; color:var(--muted); letter-spacing:.1em;}
+.price-note{font-size:11.5px; color:var(--muted); margin-bottom:8px;}
+.hr{height:1px; background:var(--line); margin:6px 0 10px;}
+.feat{list-style:none; display:flex; flex-direction:column; gap:7px;}
+.feat li{display:flex; gap:9px; font-size:13.6px; color:var(--ink); line-height:1.32; align-items:flex-start;}
+.feat li .tick{width:16px;height:16px;margin-top:1px;}
+.feat li.dim{color:#B7AE9F;}
+.feat li.head{font-family:'Eczar',serif; font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--olive); margin-top:5px; display:block;}
+.deliver{margin-top:auto; padding-top:10px; font-size:12px; color:var(--muted); border-top:1px dashed var(--line);}
+.deliver b{color:var(--terra-d); font-weight:600;}
+
+/* extras */
+.extras{margin-top:8mm; background:linear-gradient(180deg,var(--paper),#FBF4E4);
+  border:1px solid var(--line); border-radius:14px; padding:6mm 8mm;}
+.extras-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:5px 22px; margin-top:4mm;}
+.ex{display:flex; justify-content:space-between; gap:8px; font-size:13px; padding:4px 0; border-bottom:1px dotted var(--line);}
+.ex span{color:var(--ink-soft);} .ex b{color:var(--terra-d); font-weight:600; white-space:nowrap;}
+
+/* ---------- cost table ---------- */
+.tbl{width:100%; border-collapse:collapse; margin-top:4mm; font-size:13px;}
+.tbl th{font-family:'Eczar',serif; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--olive); text-align:left; padding:0 10px 8px; border-bottom:1.5px solid var(--line);}
+.tbl td{padding:10px; border-bottom:1px solid #EFE7D3; vertical-align:top; color:var(--ink-soft);}
+.tbl td.c{color:var(--ink); font-family:'Corm',serif; font-weight:600;}
+.tbl .free{color:var(--olive); font-weight:600;}
+.tbl .cost{color:var(--terra-d); font-weight:600;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr.total td{border-top:1.5px solid var(--terra-soft); background:#FBF3E2;}
+
+.callout{margin-top:7mm; background:#F3F1E0; border-left:3px solid var(--olive); border-radius:0 10px 10px 0;
+  padding:6mm 7mm;}
+.callout .k{font-family:'Eczar',serif; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--olive); margin-bottom:4px;}
+.callout p{font-size:14px; color:var(--ink);}
+
+.terms{display:grid; grid-template-columns:1fr 1fr; gap:5mm 9mm; margin-top:7mm;}
+.term{font-size:12.5px; color:var(--ink-soft); line-height:1.45;}
+.term b{font-family:'Eczar',serif; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--terra-d); display:block; margin-bottom:2px;}
+
+.foot{position:absolute; left:15mm; right:15mm; bottom:11mm; display:flex; justify-content:space-between;
+  align-items:center; border-top:1px solid var(--line); padding-top:6px;
+  font-family:'Eczar',serif; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);}
+.pagenum{color:var(--terra-soft);}
+</style>
+</head>
+<body>
+
+<!-- ============ SVG DEFS (florals) ============ -->
+<svg width="0" height="0" style="position:absolute"><defs>
+  <g id="cluster">
+    <!-- leaves -->
+    <path d="M10 70 C-10 55 -6 25 22 18 C10 40 18 58 34 60 C24 72 16 74 10 70Z" fill="#8A9256" opacity=".9"/>
+    <path d="M120 30 C150 24 168 42 158 66 C146 48 128 46 116 58 C112 44 112 34 120 30Z" fill="#9AA06B" opacity=".85"/>
+    <path d="M150 120 C176 128 180 150 164 166 C160 146 146 138 132 142 C138 128 142 122 150 120Z" fill="#7C8352" opacity=".85"/>
+    <path d="M40 150 C22 168 -2 160 -2 138 C16 150 32 144 40 130 C46 140 46 146 40 150Z" fill="#B7BE97" opacity=".9"/>
+    <!-- terracotta rose (spiral) -->
+    <g transform="translate(74 66)">
+      <circle r="30" fill="#E7B79A"/>
+      <path d="M0 0 m-22 0 a22 22 0 1 1 44 0 a17 17 0 1 0 -34 4 a12 12 0 1 1 24 -3 a8 8 0 1 0 -15 2"
+        fill="none" stroke="#B4643F" stroke-width="3.2" stroke-linecap="round"/>
+      <circle r="4" fill="#9E4E31"/>
+    </g>
+    <!-- peach bud -->
+    <g transform="translate(140 96)">
+      <circle r="16" fill="#E9C6A8"/>
+      <path d="M-9 6 a9 9 0 0 1 18 0" fill="none" stroke="#C87B54" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M-5 -2 a5 5 0 0 1 10 0" fill="none" stroke="#C87B54" stroke-width="2.2" stroke-linecap="round"/>
+    </g>
+    <!-- small yellow blossom -->
+    <g transform="translate(34 40)">
+      <g fill="#E7C15A">
+        <ellipse rx="6" ry="10" cy="-11"/><ellipse rx="6" ry="10" cy="11"/>
+        <ellipse rx="10" ry="6" cx="-11"/><ellipse rx="10" ry="6" cx="11"/>
+      </g><circle r="4.5" fill="#C88A2E"/>
+    </g>
+    <!-- slate-blue forget-me-nots -->
+    <g transform="translate(118 150)" fill="#93A0B4">
+      <circle r="5" cx="-8"/><circle r="5" cx="8"/><circle r="5" cy="-8"/><circle r="5" cy="8"/>
+      <circle r="3.4" fill="#E7C15A"/>
+    </g>
+    <g transform="translate(20 108)" fill="#A9B3C2">
+      <circle r="4" cx="-6"/><circle r="4" cx="6"/><circle r="4" cy="-6"/><circle r="4" cy="6"/>
+      <circle r="2.6" fill="#D6A34B"/>
+    </g>
+    <!-- sprig -->
+    <path d="M96 140 C104 160 108 176 104 190" fill="none" stroke="#9AA06B" stroke-width="2"/>
+    <circle cx="104" cy="190" r="3.5" fill="#C87B54"/>
+  </g>
+</defs></svg>
+
+<!-- ================= PAGE 1 : COVER ================= -->
+<div class="page">
+  <div class="frame"></div>
+  <!-- corner clusters -->
+  <svg style="position:absolute; top:6mm; left:6mm" width="230" height="200" viewBox="0 0 190 200"><use href="#cluster"/></svg>
+  <svg style="position:absolute; top:6mm; right:6mm; transform:scaleX(-1)" width="230" height="200" viewBox="0 0 190 200"><use href="#cluster"/></svg>
+  <svg style="position:absolute; bottom:30mm; left:7mm; transform:scaleY(-1)" width="120" height="105" viewBox="0 0 190 200" opacity=".95"><use href="#cluster"/></svg>
+  <svg style="position:absolute; bottom:30mm; right:7mm; transform:scale(-1,-1)" width="120" height="105" viewBox="0 0 190 200" opacity=".95"><use href="#cluster"/></svg>
+
+  <div class="cover-inner">
+    <div class="eyebrow t">Cotización de Servicio</div>
+    <div style="height:14px"></div>
+    <div class="script" style="font-size:104px">Invitaciones Digitales</div>
+    <h1 class="disp" style="font-size:34px; letter-spacing:.14em; margin-top:2px">CON CÓDIGO&nbsp;QR</h1>
+    <div style="height:20px"></div>
+    <div class="divider"><span style="font-size:20px">❦</span></div>
+    <div style="height:18px"></div>
+    <p style="max-width:135mm; font-size:18px; color:var(--slate); font-style:italic">
+      Una página web elegante para tu boda, que tus invitados abren con un solo
+      escaneo — con cuenta regresiva, ubicación, música y confirmación de asistencia.</p>
+    <div style="height:26px"></div>
+    <div class="url-chip">invitacion.109823.shop</div>
+  </div>
+
+  <div class="cover-foot">
+    <div>
+      <div class="lbl">Preparado por</div>
+      <div class="val">Jorge Núñez</div>
+    </div>
+    <div style="text-align:center">
+      <div class="lbl">Válida por 30 días</div>
+      <div class="val">2 propuestas</div>
+    </div>
+    <div style="text-align:right">
+      <div class="lbl">Fecha</div>
+      <div class="val">19 · 07 · 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PAGE 2 : QUÉ ES / CÓMO FUNCIONA ================= -->
+<div class="page">
+  <div class="frame"></div>
+  <svg style="position:absolute; top:5mm; right:5mm; transform:scaleX(-1)" width="185" height="160" viewBox="0 0 190 200"><use href="#cluster"/></svg>
+  <svg style="position:absolute; bottom:5mm; left:5mm; transform:scaleY(-1)" width="185" height="160" viewBox="0 0 190 200"><use href="#cluster"/></svg>
+  <div class="pad">
+    <div class="hd">
+      <span class="num">Uno</span>
+      <div class="eyebrow">Qué es y cómo funciona</div>
+      <h2>Tu invitación vive en internet</h2>
+    </div>
+    <p style="max-width:150mm">
+      En lugar de una tarjeta de papel, tus invitados reciben un <b>enlace</b> o escanean un
+      <b>código QR</b> y se abre una invitación interactiva en su celular. Se comparte por WhatsApp
+      en segundos, se actualiza si algo cambia y no se pierde ni se arruga.</p>
+
+    <div class="steps">
+      <div class="step">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><rect x="9" y="9" width="30" height="30" rx="4" stroke="#BC6242" stroke-width="2.4"/><rect x="15" y="15" width="7" height="7" fill="#7C8352"/><rect x="26" y="15" width="7" height="7" fill="#7C8352"/><rect x="15" y="26" width="7" height="7" fill="#7C8352"/><rect x="26" y="26" width="7" height="7" fill="#D6A34B"/></svg>
+        <div class="st">Escanea</div>
+        <div class="sd">Apunta la cámara al código QR de la tarjeta.</div>
+      </div>
+      <div class="step">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><rect x="15" y="6" width="18" height="36" rx="4" stroke="#BC6242" stroke-width="2.4"/><path d="M20 14h8M20 20h8M20 26h5" stroke="#7C8352" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="35" r="1.6" fill="#BC6242"/></svg>
+        <div class="st">Abre</div>
+        <div class="sd">Ve la invitación completa en su teléfono.</div>
+      </div>
+      <div class="step">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><path d="M12 25l8 8 16-18" stroke="#7C8352" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="24" r="19" stroke="#BC6242" stroke-width="2.2" opacity=".5"/></svg>
+        <div class="st">Confirma</div>
+        <div class="sd">Responde si asistirá con un toque.</div>
+      </div>
+      <div class="step">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><circle cx="14" cy="24" r="5" stroke="#BC6242" stroke-width="2.4"/><circle cx="34" cy="13" r="5" stroke="#7C8352" stroke-width="2.4"/><circle cx="34" cy="35" r="5" stroke="#D6A34B" stroke-width="2.4"/><path d="M18.5 21.5l11-6M18.5 26.5l11 6" stroke="#B4643F" stroke-width="2"/></svg>
+        <div class="st">Comparte</div>
+        <div class="sd">Reenvía el enlace por WhatsApp fácilmente.</div>
+      </div>
+    </div>
+
+    <div class="always">
+      <h3 style="color:var(--terra-d)">Incluido en todas las invitaciones</h3>
+      <div class="chips">
+        <div class="chip"><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Diseño personalizado con sus nombres, fecha y colores</div>
+        <div class="chip"><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Cuenta regresiva al gran día</div>
+        <div class="chip"><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Se ve perfecto en celular (diseño responsivo)</div>
+        <div class="chip"><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Código QR + enlace listo para WhatsApp</div>
+        <div class="chip"><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Candado de seguridad (HTTPS) y carga rápida</div>
+        <div class="chip"><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Alojado en su propio subdominio elegante</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:8mm">
+      <div class="k">El dato</div>
+      <p>Cada boda vive en su propia dirección — por ejemplo
+      <b style="color:var(--terra-d)">janeth-y-miguel.109823.shop</b> — usando el dominio que ya tienes.
+      Puedes crear invitaciones ilimitadas sin volver a pagar dominio.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Invitaciones Digitales con QR</span><span class="pagenum">02</span></div>
+</div>
+
+<!-- ================= PAGE 3 : PAQUETES ================= -->
+<div class="page">
+  <div class="frame"></div>
+  <svg style="position:absolute; top:4mm; left:5mm" width="150" height="130" viewBox="0 0 190 200"><use href="#cluster"/></svg>
+  <svg style="position:absolute; top:4mm; right:5mm; transform:scaleX(-1)" width="150" height="130" viewBox="0 0 190 200"><use href="#cluster"/></svg>
+  <div class="pad" style="padding-top:13mm">
+    <div class="hd" style="text-align:center; align-items:center; margin-bottom:5mm">
+      <span class="num">Dos</span>
+      <div class="eyebrow">Elige tu propuesta</div>
+      <h2>Dos paquetes a tu medida</h2>
+    </div>
+
+    <div class="cards">
+      <!-- SENCILLA -->
+      <div class="card">
+        <div class="kite">Propuesta</div>
+        <div class="name">Sencilla</div>
+        <div class="tag">Elegante y al punto. Todo lo esencial para invitar con estilo.</div>
+        <div class="price"><span class="cur">$</span><span class="amt">899</span><span class="mx">MXN</span></div>
+        <div class="price-note">Pago único · IVA incluido</div>
+        <div class="hr"></div>
+        <ul class="feat">
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Portada con nombres, fecha y cuenta regresiva</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Detalles del evento: ceremonia y recepción</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Ubicación con botón a Google Maps</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Música de fondo y mensaje de bienvenida</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Código QR + enlace para compartir</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#7C8352" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>1 ronda de ajustes incluida</li>
+          <li class="dim"><svg class="tick" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15" stroke="#C9C0B0" stroke-width="2" stroke-linecap="round"/></svg>Confirmación de asistencia (RSVP)</li>
+          <li class="dim"><svg class="tick" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15" stroke="#C9C0B0" stroke-width="2" stroke-linecap="round"/></svg>Galería, mesa de regalos e itinerario</li>
+        </ul>
+        <div class="deliver">Entrega <b>3–4 días</b> · Vigente hasta <b>15 días</b> después de la boda</div>
+      </div>
+
+      <!-- PRO -->
+      <div class="card pro">
+        <div class="badge">Más completa</div>
+        <div class="kite">Propuesta</div>
+        <div class="name">Pro</div>
+        <div class="tag">La experiencia completa: interactiva, con confirmación y gestión de invitados.</div>
+        <div class="price"><span class="cur">$</span><span class="amt">1,999</span><span class="mx">MXN</span></div>
+        <div class="price-note">Pago único · IVA incluido</div>
+        <div class="hr"></div>
+        <ul class="feat">
+          <li class="head">Todo lo de Sencilla, y además:</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#BC6242" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><b>Confirmación de asistencia (RSVP)</b> con panel de respuestas</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#BC6242" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Pase de invitados personalizado y control de cupos</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#BC6242" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Galería de fotos y sección "Nuestra historia"</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#BC6242" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Mesa de regalos, itinerario y código de vestimenta</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#BC6242" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Animaciones y diseño de tarjeta física con QR (para imprimir)</li>
+          <li><svg class="tick" viewBox="0 0 20 20"><path d="M4 10l4 4 8-9" stroke="#BC6242" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Hasta 3 rondas de ajustes · Soporte prioritario</li>
+        </ul>
+        <div class="deliver">Entrega <b>5–7 días</b> · Vigente hasta <b>1 mes</b> después de la boda</div>
+      </div>
+    </div>
+
+    <div class="extras">
+      <h3 style="color:var(--terra-d)">Extras opcionales</h3>
+      <div class="extras-grid">
+        <div class="ex"><span>Impresión de tarjetas QR</span><b>desde $6 c/u</b></div>
+        <div class="ex"><span>Dominio propio (.com)</span><b>+$390/año</b></div>
+        <div class="ex"><span>Vigencia extendida 1 año</span><b>+$250</b></div>
+        <div class="ex"><span>Ronda extra de cambios</span><b>+$150</b></div>
+        <div class="ex"><span>Galería con +30 fotos</span><b>+$200</b></div>
+        <div class="ex"><span>Entrega urgente (48 h)</span><b>+$350</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Invitaciones Digitales con QR</span><span class="pagenum">03</span></div>
+</div>
+
+<!-- ================= PAGE 4 : CONCEPTOS / COSTOS + CONDICIONES ================= -->
+<div class="page">
+  <div class="frame"></div>
+  <svg style="position:absolute; bottom:4mm; right:5mm; transform:scale(-1,-1)" width="165" height="140" viewBox="0 0 190 200"><use href="#cluster"/></svg>
+  <div class="pad">
+    <div class="hd">
+      <span class="num">Tres</span>
+      <div class="eyebrow">Transparencia</div>
+      <h2>Los conceptos que conlleva</h2>
+    </div>
+    <p style="max-width:155mm; margin-bottom:2mm">
+      Todo lo que hace funcionar la invitación. La clave del modelo:
+      <b style="color:var(--terra-d)">el único gasto real es el dominio</b> — y ya lo tienes.
+      Lo demás se resuelve con herramientas profesionales de plan gratuito.</p>
+
+    <table class="tbl">
+      <thead><tr><th style="width:26%">Concepto</th><th style="width:50%">Qué es</th><th style="width:24%">Costo real</th></tr></thead>
+      <tbody>
+        <tr><td class="c">Dominio</td><td>109823.shop — la dirección base. <b>Ya adquirido.</b></td><td class="cost">≈ $180 MXN/año</td></tr>
+        <tr><td class="c">Subdominios</td><td>invitacion.109823.shop y uno por cada boda. Ilimitados.</td><td class="free">$0</td></tr>
+        <tr><td class="c">Hosting</td><td>Netlify / Vercel / Cloudflare Pages — plan gratuito.</td><td class="free">$0</td></tr>
+        <tr><td class="c">Certificado SSL</td><td>Candado HTTPS automático (Let's Encrypt).</td><td class="free">$0</td></tr>
+        <tr><td class="c">Código QR</td><td>Generación ilimitada de códigos.</td><td class="free">$0</td></tr>
+        <tr><td class="c">Confirmación RSVP</td><td>Formulario + hoja de respuestas (Google / propio).</td><td class="free">$0</td></tr>
+        <tr><td class="c">Música, mapa, galería</td><td>Recursos embebidos y almacenamiento gratuito.</td><td class="free">$0</td></tr>
+        <tr><td class="c">Diseño y desarrollo</td><td>Plantilla reutilizable + personalización por boda.</td><td class="free">Tu tiempo</td></tr>
+        <tr class="total"><td class="c">Costo por invitación</td><td>Gasto adicional al crear una nueva boda.</td><td class="free">$0 → margen casi total</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="k">En una frase</div>
+      <p>Pagas el dominio <b>una vez al año</b> y sobre él construyes <b>todas las invitaciones que quieras</b>.
+      Cada venta de $899 o $1,999 es prácticamente utilidad.</p>
+    </div>
+
+    <div class="terms">
+      <div class="term"><b>Qué necesito de ti</b>Nombres, fecha, lugares, horarios, fotos y datos de mesa de regalos. Con eso arranco.</div>
+      <div class="term"><b>Formas de pago</b>Transferencia o efectivo. 50% para iniciar, 50% al aprobar el diseño final.</div>
+      <div class="term"><b>Tiempo de entrega</b>Sencilla: 3–4 días hábiles. Pro: 5–7 días hábiles, desde recibir tu información.</div>
+      <div class="term"><b>Vigencia de la cotización</b>30 días a partir de la fecha indicada. Precios en pesos mexicanos.</div>
+    </div>
+
+    <div style="text-align:center; margin-top:9mm">
+      <div class="divider"><span style="font-size:18px">❦</span></div>
+      <div class="script" style="font-size:46px; margin-top:8px">¡Hagámoslo realidad!</div>
+      <p class="small" style="margin-top:2px">Escríbeme para agendar tu invitación · Jorge Núñez · Invitaciones Digitales</p>
+    </div>
+  </div>
+  <div class="foot"><span>Cotización · Invitaciones Digitales con QR</span><span class="pagenum">04</span></div>
+</div>
+
+</body>
+</html>
