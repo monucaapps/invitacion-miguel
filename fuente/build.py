@@ -59,3 +59,30 @@ docs = RAIZ / "docs"; docs.mkdir(exist_ok=True)
 (docs / "index.html").write_text(demo_page)
 (docs / ".nojekyll").write_text("")
 print("HTML: docs/index.html")
+
+# 4) Tarjeta QR imprimible (apunta a la invitación publicada)
+URL_INVITACION = "https://monucaapps.github.io/invitacion-demo/"
+try:
+    import segno, io, base64
+    qr = segno.make(URL_INVITACION, error="h")   # alta corrección para impresión
+    buf = io.BytesIO(); qr.save(buf, kind="png", scale=20, border=2, dark="#463A31", light="#FFFFFF")
+    qr_b64 = base64.b64encode(buf.getvalue()).decode()
+    card = (AQUI / "tarjeta_qr.html").read_text() \
+        .replace("/*FACES*/", faces_css).replace("/*ASSETS*/", assets).replace("/*QR*/", qr_b64)
+    tmp = AQUI / "_tarjeta_final.html"; tmp.write_text(card)
+    subprocess.run([CHROME, "--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer",
+                    f"--print-to-pdf={RAIZ/'Tarjeta-QR.pdf'}", tmp.as_uri()], check=True)
+    # Hoja A4 con 4 tarjetas (2x2 = A4) y guías de corte
+    head = card.split("<body>")[0]
+    body_card = card.split("<body>")[1].split("</body>")[0].strip()
+    a4css = ("<style>@page{size:A4;margin:0;}body{margin:0;}"
+             ".sheet{width:210mm;height:297mm;display:grid;grid-template-columns:105mm 105mm;grid-template-rows:148.5mm 148.5mm;}"
+             ".sheet .card{width:105mm!important;height:148.5mm!important;page-break-after:auto!important;"
+             "outline:0.2mm dashed #d9cdb0;outline-offset:-0.1mm;}</style>")
+    a4 = head + a4css + "</head><body><div class='sheet'>" + body_card*4 + "</div></body></html>"
+    tmp2 = AQUI / "_tarjeta_a4_final.html"; tmp2.write_text(a4)
+    subprocess.run([CHROME, "--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer",
+                    f"--print-to-pdf={RAIZ/'Tarjetas-QR-A4-imprimir.pdf'}", tmp2.as_uri()], check=True)
+    print("PDF: Tarjeta-QR.pdf  +  Tarjetas-QR-A4-imprimir.pdf")
+except ImportError:
+    print("segno no instalado; omito tarjeta QR  (pip install segno)")

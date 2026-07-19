@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style id="faces">/*FACES*/</style>
+<style id="assets">/*ASSETS*/</style>
+<style>
+:root{
+  --cream:#FAF6EA; --cream2:#F4ECD8; --paper:#FFFDF7;
+  --terra:#BC6242; --terra-d:#9E4E31; --terra-soft:#D89C7E;
+  --olive:#7C8352; --slate:#7E8CA0; --ink:#4A4038; --ink-soft:#6E6357; --muted:#8C8171; --line:#E4D8BF;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+@page{size:105mm 148mm; margin:0;}   /* A6 vertical */
+html,body{background:#ddd;}
+body{font-family:'Corm',serif; color:var(--ink); -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+
+.card{position:relative; width:105mm; height:148mm; overflow:hidden;
+  background:radial-gradient(120% 80% at 50% 0%, #FFFDF7 0%, var(--cream) 60%, var(--cream2) 120%);
+  page-break-after:always;}
+.card:last-child{page-break-after:auto;}
+.frame{position:absolute; inset:4mm; background:var(--art-border) no-repeat center; background-size:100% 100%; pointer-events:none;}
+.inner{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:16mm 14mm;}
+
+.eyebrow{font-family:'Eczar',serif; text-transform:uppercase; letter-spacing:.4em; font-size:8px; color:var(--olive);}
+.names{font-family:'Vibes',cursive; color:var(--terra); font-size:40px; line-height:.9; margin:3px 0 2px;}
+.date{font-family:'Corm',serif; color:var(--ink); font-size:12px; letter-spacing:.24em; font-weight:500; padding-left:.24em;}
+
+.qrtile{width:42mm; height:42mm; background:#fff; border:1px solid var(--line); border-radius:10px;
+  padding:2.4mm; margin:6mm 0 5mm; box-shadow:0 6px 16px rgba(150,110,70,.14); display:flex;}
+.qrtile img{width:100%; height:100%; display:block; image-rendering:pixelated;}
+
+.cta{font-family:'Eczar',serif; text-transform:uppercase; letter-spacing:.2em; font-size:9px; color:var(--terra-d);}
+.sub{font-family:'Corm',serif; font-style:italic; font-size:11px; color:var(--slate); margin-top:3px;}
+.url{font-family:'Eczar',serif; font-size:7.5px; letter-spacing:.06em; color:var(--muted); margin-top:6mm;
+  background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:4px 12px;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="frame"></div>
+    <div class="inner">
+      <div class="eyebrow">Nuestra Boda</div>
+      <div class="names">Janeth&nbsp;&amp;&nbsp;Miguel</div>
+      <div class="date">27 · 03 · 2027</div>
+
+      <div class="qrtile"><img alt="QR" src="data:image/png;base64,/*QR*/"></div>
+
+      <div class="cta">Escanea para ver la invitación</div>
+      <div class="sub">Confirma tu asistencia en línea</div>
+      <div class="url">monucaapps.github.io/invitacion-demo</div>
+    </div>
+  </div>
+</body>
+</html>
